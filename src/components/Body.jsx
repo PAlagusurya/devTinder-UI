@@ -20,7 +20,7 @@ const Body = () => {
 
       dispatch(addUser(res?.data?.data));
     } catch (e) {
-      if (e.status === 401) {
+      if (e.response && e.response.status === 401) {
         navigate("/login");
       }
       console.error(e);
@@ -28,8 +28,10 @@ const Body = () => {
   };
 
   useEffect(() => {
-    fetchUser();
-  }, []);
+    if (!userData) {
+      fetchUser();
+    }
+  }, [userData]);
 
   // min-h-screen ensures the entire viewport height is used.
   //flex-grow allows the Outlet (which contains Login) to take up remaining space.
