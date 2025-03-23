@@ -28,9 +28,7 @@ const Body = () => {
   };
 
   useEffect(() => {
-    if (!userData) {
-      fetchUser();
-    }
+    fetchUser();
   }, [userData]);
 
   // min-h-screen ensures the entire viewport height is used.
