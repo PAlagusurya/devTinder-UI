@@ -31,8 +31,8 @@ const Body = () => {
     fetchUser();
   }, [userData]);
 
-  // min-h-screen ensures the entire viewport height is used.
-  //flex-grow allows the Outlet (which contains Login) to take up remaining space.
+  if (!userData) return null;
+
   return (
     <div className="min-h-screen flex flex-col">
       <NavBar />
