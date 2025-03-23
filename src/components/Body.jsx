@@ -20,7 +20,7 @@ const Body = () => {
 
       dispatch(addUser(res?.data?.data));
     } catch (e) {
-      if (e.response && e.response.status === 401) {
+      if (e.status === 401) {
         navigate("/login");
       }
       console.error(e);
@@ -31,7 +31,9 @@ const Body = () => {
     fetchUser();
   }, [userData]);
 
-  if (!userData) return null;
+  if (!userData) {
+    navigate("/login");
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
